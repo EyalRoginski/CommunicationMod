@@ -124,7 +124,7 @@ public class CommandExecutor {
 
     private static void executeAbandonCommand() throws InvalidCommandException {
         if (!isInDungeon()) {
-            throw new InvalidCommandException("Cannot abandon run: not currently in a dungeon.");
+            throw new InvalidCommandException("Cannot abandon run: not currently in a run.");
         }
         AbstractDungeon.closeCurrentScreen();
         AbstractDungeon.player.isDead = true;
