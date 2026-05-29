@@ -5,7 +5,7 @@
 
     <groupId>autoplay</groupId>
     <artifactId>CommunicationMod</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <packaging>jar</packaging>
     <name>Communication Mod</name>
     <description>Used to help external programs communicate with Slay the Spire</description>
@@ -53,7 +53,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.2</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>CommunicationMod</id>
