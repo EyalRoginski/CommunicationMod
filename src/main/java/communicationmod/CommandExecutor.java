@@ -78,6 +78,9 @@ public class CommandExecutor {
             case "wait":
                 executeWaitCommand(tokens);
                 return true;
+            case "abandon":
+                executeAbandonCommand();
+                return true;
 
             default:
                 logger.info("This should never happen.");
@@ -112,10 +115,22 @@ public class CommandExecutor {
             availableCommands.add("key");
             availableCommands.add("click");
             availableCommands.add("wait");
+            availableCommands.add("abandon");
         }
         availableCommands.add("state");
         return availableCommands;
     }
+
+    private static void executeAbandonCommand() throws InvalidCommandException {
+        if (!isInDungeon()) {
+            throw new InvalidCommandException("Cannot abandon run: not currently in a dungeon.");
+        }
+        AbstractDungeon.closeCurrentScreen();
+        AbstractDungeon.player.isDead = true;
+        AbstractDungeon.deathScreen = new DeathScreen(AbstractDungeon.getMonsters());
+        CommunicationMod.mustSendGameState = true;
+    }
+
 
     public static boolean isCommandAvailable(String command) {
         if(command.equals("confirm") || command.equalsIgnoreCase("proceed")) {
